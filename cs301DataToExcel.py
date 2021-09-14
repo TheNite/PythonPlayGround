@@ -23,18 +23,11 @@ for file in files:
     if file.endswith('.data'):
         dataFile = file
 
-try:
-    with open(dataFile, 'r+') as f:
-        allLines = f.readlines()
-        f.seek(0)
-        f.write(str(allLines[0].lstrip(',')))
-        f.write(''.join(allLines[1:]))
-        f.truncate()
-except:
-    print("Couldn't find any file ending with .data")
+if len(dataFile) == 0:
+    print(f"Couldn't find a .data file{'.'*6}Exiting")
     time.sleep(10)
     sys.exit(1)
-
+    
 data = pd.read_csv(dataFile, sep=",")
 print(data)
 
