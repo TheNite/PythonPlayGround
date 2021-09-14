@@ -11,23 +11,21 @@ if sys.platform in windows_platform:
     time.sleep(10)
     sys.exit(1)
 
-
 os.chdir(os.getcwd())
 
 files = os.listdir()
 
 dataFile = ''
 
-
 for file in files:
     if file.endswith('.data'):
         dataFile = file
 
 if len(dataFile) == 0:
-    print(f"Couldn't find a .data file{'.'*6}Exiting")
+    print(f"Couldn't find a .data file{'.' * 6}Exiting")
     time.sleep(10)
     sys.exit(1)
-    
+
 data = pd.read_csv(dataFile, sep=",")
 print(data)
 
